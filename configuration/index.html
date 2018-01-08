@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Configuration - CIDER: The Clojure Interactive Development Environment that Rocks</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Configuration";
+    var mkdocs_page_input_path = "configuration.md";
+    var mkdocs_page_url = "/configuration/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CIDER: The Clojure Interactive Development Environment that Rocks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../up_and_running/">Up and Running</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../interactive_programming/">Interactive Programming</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using_the_repl/">Using the REPL</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../code_completion/">Code Completion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../navigating_stacktraces/">Navigating Stacktraces</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../running_tests/">Running Tests</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../debugging/">Debugging</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../managing_connections/">Managing Connections</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../miscellaneous_features/">Miscellaneous Features</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Configuration</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#basic-configuration">Basic configuration</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#auto-enabling-cider-mode-in-clojure-mode-buffers">Auto-enabling cider-mode in clojure-mode buffers</a></li>
+        
+            <li><a class="toctree-l3" href="#prompt-for-confirmation-of-the-symbol-at-point">Prompt for confirmation of the symbol at point</a></li>
+        
+            <li><a class="toctree-l3" href="#log-communication-with-the-nrepl-server">Log communication with the nREPL server</a></li>
+        
+            <li><a class="toctree-l3" href="#hide-special-nrepl-buffers">Hide special nREPL buffers</a></li>
+        
+            <li><a class="toctree-l3" href="#prefer-local-resources-over-remote-ones">Prefer local resources over remote ones</a></li>
+        
+            <li><a class="toctree-l3" href="#auto-save-clojure-buffers-on-load">Auto-save Clojure buffers on load</a></li>
+        
+            <li><a class="toctree-l3" href="#changing-the-result-prefix-for-interactive-evaluation">Changing the result prefix for interactive evaluation</a></li>
+        
+            <li><a class="toctree-l3" href="#use-a-local-copy-of-the-jdk-api-documentation">Use a local copy of the JDK API documentation</a></li>
+        
+            <li><a class="toctree-l3" href="#filter-out-namespaces-in-certain-namespace-related-commands">Filter out namespaces in certain namespace-related commands</a></li>
+        
+            <li><a class="toctree-l3" href="#truncate-long-lines-in-special-buffers">Truncate long lines in special buffers</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#syntax-highlighting">Syntax highlighting</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#dynamic-syntax-highlighting">Dynamic syntax highlighting</a></li>
+        
+            <li><a class="toctree-l3" href="#syntax-highlighting-for-reader-conditionals">Syntax highlighting for reader conditionals</a></li>
+        
+            <li><a class="toctree-l3" href="#customizing-cider-faces">Customizing CIDER faces</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#configuring-eldoc">Configuring eldoc</a></li>
+    
+
+    <li class="toctree-l2"><a href="#overlays">Overlays</a></li>
+    
+
+    <li class="toctree-l2"><a href="#specifying-indentation">Specifying indentation</a></li>
+    
+
+    <li class="toctree-l2"><a href="#minibuffer-completion">Minibuffer completion</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#icomplete">icomplete</a></li>
+        
+            <li><a class="toctree-l3" href="#ido">ido</a></li>
+        
+            <li><a class="toctree-l3" href="#ivy-recommended">ivy (recommended)</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#pretty-printing">Pretty-printing</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../indent_spec/">Indentation Specification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_packages/">Additional Packages</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../caveats/">Caveats</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_resources/">Additional Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../hacking_on_cider/">Hacking on CIDER</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about/team/">Team</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/support/">Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/release_policy/">Release Policy</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/changelog/">Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/logo/">Logo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CIDER: The Clojure Interactive Development Environment that Rocks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Configuration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/clojure-emacs/cider/edit/master/docs/configuration.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>In the spirit of Emacs almost every aspect of CIDER's behaviour
+is configurable. We've tried to come up with some reasonable
+defaults, but we've also tried to account for different people's
+preferences, so everyone could make CIDER as comfortable as
+possible for them.</p>
+<p>You can see every single customizable configuration option with the command
+<kbd>M-x customize-group RET cider</kbd>.</p>
+<p>You can certainly use CIDER without configuring it any further,
+but here are some ways other folks are adjusting their CIDER
+experience.</p>
+<h2 id="basic-configuration">Basic configuration</h2>
+<h3 id="auto-enabling-cider-mode-in-clojure-mode-buffers">Auto-enabling cider-mode in clojure-mode buffers</h3>
+<p>By default CIDER will enable <code>cider-mode</code> in all <code>clojure-mode</code> buffers when the
+first CIDER connection is established. It will also add a <code>clojure-mode</code> hook to
+enable it on newly created <code>clojure-mode</code> buffers. The configuration snippet
+bellow allows you to override this (somewhat non-standard) behavior.</p>
+<pre><code class="el">;; Suppress auto-enabling of `cider-mode` in `clojure-mode` buffers, when starting CIDER
+(setq cider-auto-mode nil)
+</code></pre>
+
+<h3 id="prompt-for-confirmation-of-the-symbol-at-point">Prompt for confirmation of the symbol at point</h3>
+<p>By default, interactive commands that require a symbol (e.g. <code>cider-doc</code>) will
+prompt for the symbol, with the prompt defaulting to the symbol at point. You
+can set <code>cider-prompt-for-symbol</code> to <code>nil</code> to instead try the command with the
+symbol at point first, and only prompt if that fails (this used to be the
+default behavior in older CIDER releases).</p>
+<pre><code class="el">(setq cider-prompt-for-symbol nil)
+</code></pre>
+
+<h3 id="log-communication-with-the-nrepl-server">Log communication with the nREPL server</h3>
+<pre><code class="el">(setq nrepl-log-messages t)
+</code></pre>
+
+<p>Basically, this will result in the creation of buffers like <code>*nrepl-messages
+conn-name*</code>. The communication log is invaluable for debugging CIDER issues, so
+you're generally advised to enable logging when you need to debug something
+nREPL related.</p>
+<h3 id="hide-special-nrepl-buffers">Hide special nREPL buffers</h3>
+<p>You can hide the <code>*nrepl-connection*</code> and <code>*nrepl-server*</code> buffers
+from appearing in some buffer switching commands like
+<code>switch-to-buffer</code>(<kbd>C-x b</kbd>) like this:</p>
+<pre><code class="el">(setq nrepl-hide-special-buffers t)
+</code></pre>
+
+<p>When using <code>switch-to-buffer</code>, pressing <kbd>SPC</kbd> after the command will
+make the hidden buffers visible. They'll always be visible in
+<code>list-buffers</code> (<kbd>C-x C-b</kbd>).</p>
+<h3 id="prefer-local-resources-over-remote-ones">Prefer local resources over remote ones</h3>
+<p>To prefer local resources to remote (tramp) ones when both are available:</p>
+<pre><code class="el">(setq cider-prefer-local-resources t)
+</code></pre>
+
+<h3 id="auto-save-clojure-buffers-on-load">Auto-save Clojure buffers on load</h3>
+<p>Normally CIDER would prompt you to save a modified Clojure buffer on <kbd>C-c C-k</kbd> (<code>cider-load-buffer</code>).
+You can change this behaviour by adjusting <code>cider-save-file-on-load</code>:</p>
+<pre><code class="el">;; Don't prompt and don't save
+(setq cider-save-file-on-load nil)
+;; Just save without prompting
+(setq cider-save-file-on-load t)
+</code></pre>
+
+<h3 id="changing-the-result-prefix-for-interactive-evaluation">Changing the result prefix for interactive evaluation</h3>
+<p>Change the result prefix for interactive evaluation (by default it's <code>=&gt;</code>):</p>
+<pre><code class="el">(setq cider-eval-result-prefix &quot;;; =&gt; &quot;)
+</code></pre>
+
+<p>To remove the prefix altogether just set it to an empty string(<code>""</code>).</p>
+<h3 id="use-a-local-copy-of-the-jdk-api-documentation">Use a local copy of the JDK API documentation</h3>
+<p>If you are targeting the JVM and prefer a local copy of the JDK API
+documentation over Oracle's official copy (e.g., for
+<a href="http://docs.oracle.com/javase/8/docs/api/">JavaSE 8</a>), per nREPL's
+<a href="http://docs.oracle.com/javase/8/docs/api/"><code>javadoc-info</code> logic (accurate as of 29 Dec 2014)</a>,
+you can arrange your project to include the <strong>root</strong> path of the local API doc
+(i.e., where the <code>index.html</code> is located) to be included on your classpath
+(i.e., where the doc HTML files can be located by
+<code>clojure.java.io/resource</code>). For example, for Leiningen, with the local API
+path being <code>/usr/share/doc/java/api/</code>, put the following line in
+<code>project.clj</code>:</p>
+<pre><code class="clj">:dev {:resource-paths [&quot;/usr/share/doc/java/api/&quot;]}
+</code></pre>
+
+<p><strong>or</strong> the following line in <code>$HOME/.lein/profiles.clj</code>:</p>
+<pre><code class="clj">:user {:resource-paths [&quot;/usr/share/doc/java/api/&quot;]}
+</code></pre>
+
+<p>More details can be found <a href="https://github.com/clojure-emacs/cider/issues/930">here</a>.</p>
+<h3 id="filter-out-namespaces-in-certain-namespace-related-commands">Filter out namespaces in certain namespace-related commands</h3>
+<p>You can hide all nREPL middleware details from <code>cider-browse-ns*</code> and <code>cider-apropos*</code>
+commands by customizing the variable <code>cider-filter-regexps</code>. It should be a list of
+regexps matching the pattern of namespaces you want to filter out.</p>
+<p>Its default value is <code>'("^cider.nrepl" "^refactor-nrepl" "^clojure.tools.nrepl")</code>,
+the most commonly used middleware collections/packages.</p>
+<p>An important thing to note is that this list of regexps is passed on to the middleware
+without any pre-processing. So, the regexps have to be in Clojure format (with twice the number of backslashes)
+and not Emacs Lisp. For example, to achieve the above effect, you could also set <code>cider-filter-regexps</code> to <code>'(".*nrepl")</code>.</p>
+<p>To customize <code>cider-filter-regexps</code>, you could use the Emacs customize UI,
+with <kbd>M-x</kbd> <code>customize-variable</code> <kbd>RET</kbd> <code>cider-filter-regexps</code>.</p>
+<p>Or by including a similar snippet along with the other CIDER configuration.</p>
+<pre><code class="el">(setq cider-filter-regexps '(&quot;.*nrepl&quot;))
+</code></pre>
+
+<h3 id="truncate-long-lines-in-special-buffers">Truncate long lines in special buffers</h3>
+<p>By default contents of CIDER's special buffers such as <code>*cider-test-report*</code>
+or <code>*cider-doc*</code> are line truncated. You can set
+<code>cider-special-mode-truncate-lines</code> to <code>nil</code> to make those buffers use word
+wrapping instead of line truncating.</p>
+<p><strong>This variable should be set before loading CIDER</strong> (which means before
+<code>require</code>-ing it or autoloading it).</p>
+<pre><code class="el">(setq cider-special-mode-truncate-lines nil)
+</code></pre>
+
+<h2 id="syntax-highlighting">Syntax highlighting</h2>
+<h3 id="dynamic-syntax-highlighting">Dynamic syntax highlighting</h3>
+<p>CIDER can syntax highlight symbols that are known to be defined. By default,
+this is done on symbols from the <code>clojure.core</code> namespace, as well as macros
+from any namespace. If you'd like CIDER to also colorize usages of functions
+and variables from any namespace, do:</p>
+<pre><code class="el">(setq cider-font-lock-dynamically '(macro core function var))
+</code></pre>
+
+<p>Here's how code looks without dynamic syntax highlighting.</p>
+<p><img alt="Dynamic Font-lock Off" src="../images/dynamic_font_lock_off.png" /></p>
+<p>And here's how to the code looks when it's turned on.</p>
+<p><img alt="Dynamic Font-lock On" src="../images/dynamic_font_lock_on.png" /></p>
+<h3 id="syntax-highlighting-for-reader-conditionals">Syntax highlighting for reader conditionals</h3>
+<p>By default CIDER will apply font-locking to unused reader conditional
+expressions depending on the buffer CIDER connection type.</p>
+<p><img alt="Reader Conditionals" src="../images/reader_conditionals.png" /></p>
+<p>You can disable this behavior by adjusting <code>cider-font-lock-reader-conditionals</code>:</p>
+<pre><code class="el">(setq cider-font-lock-reader-conditionals nil)
+</code></pre>
+
+<h3 id="customizing-cider-faces">Customizing CIDER faces</h3>
+<p>CIDER defines a few custom faces that you might want to adjust (although normally your color theme
+should take care of them):</p>
+<ul>
+<li><code>cider-deprecated-face</code> - used for syntax highlighting deprecated vars</li>
+<li><code>cider-instrumented-face</code> - used for syntax highlighting instrumented for debugging vars</li>
+<li><code>cider-traced-face</code> - used for syntax highlighting traced vars</li>
+<li><code>cider-reader-conditional-face</code> - used for syntax highlighting inactive reader conditional branches</li>
+</ul>
+<h2 id="configuring-eldoc">Configuring eldoc</h2>
+<ul>
+<li>Enable <code>eldoc</code> in Clojure buffers:</li>
+</ul>
+<pre><code class="el">(add-hook 'cider-mode-hook #'eldoc-mode)
+</code></pre>
+
+<p><img alt="Eldoc" src="../images/eldoc.png" /></p>
+<ul>
+<li>CIDER also would show the eldoc for the symbol at point. So in <code>(map inc ...)</code>
+when the cursor is over <code>inc</code> its eldoc would be displayed. You can turn off this
+behaviour by:</li>
+</ul>
+<pre><code class="el">(setq cider-eldoc-display-for-symbol-at-point nil)
+</code></pre>
+
+<ul>
+<li>CIDER respects the value of <code>eldoc-echo-area-use-multiline-p</code> when
+displaying documentation in the minibuffer. You can customize this variable to change
+its behaviour.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>eldoc-echo-area-use-multiline-p</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t</code></td>
+<td>Never attempt to truncate messages. Complete symbol name and function arglist or variable documentation will be displayed even if echo area must be resized to fit.</td>
+</tr>
+<tr>
+<td><code>nil</code></td>
+<td>Messages are always truncated to fit in a single line of display in the echo area.</td>
+</tr>
+<tr>
+<td><code>truncate-sym-name-if-fit</code> or anything non-nil</td>
+<td>Symbol name may be truncated if it will enable the function arglist or documentation string to fit on a single line. Otherwise, behavior is just like <code>t</code> case.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>CIDER will try to add expected function arguments based on the current context
+(for example for the <code>datomic.api/q</code> function where it will show the expected
+inputs of the query at point), if the variable <code>cider-eldoc-display-context-dependent-info</code>
+is non-nil:</li>
+</ul>
+<pre><code class="el">(setq cider-eldoc-display-context-dependent-info t)
+</code></pre>
+
+<h2 id="overlays">Overlays</h2>
+<p>When you evaluate code in Clojure files, the result is displayed in the buffer
+itself, in an overlay right after the evaluated code.  If you want this overlay
+to be font-locked (syntax-highlighted) like Clojure code, set the following
+variable.</p>
+<pre><code class="el">(setq cider-overlays-use-font-lock t)
+</code></pre>
+
+<p>You can disable overlays entirely (and display results in the echo-area at the
+bottom) with the <code>cider-use-overlays</code> variable.</p>
+<pre><code class="el">(setq cider-use-overlays nil)
+</code></pre>
+
+<h2 id="specifying-indentation">Specifying indentation</h2>
+<p>It is common for macros to require special indentation mechanisms. This is most
+common in macros that start with <code>do</code>, <code>def</code>, or <code>with-</code>.  CIDER has some
+heuristics to detect these macros, but it also lets you explicitly specify how
+a macro should be indented.</p>
+<p>Here's a simple example of how someone would specify the indent spec for a macro
+they've written (using an example in core):</p>
+<pre><code class="clj">(defmacro with-in-str
+  &quot;[DOCSTRING]&quot;
+  {:style/indent 1}
+  [s &amp; body]
+  ...cut for brevity...)
+</code></pre>
+
+<p>And here's a more complex one:</p>
+<pre><code class="clj">(defmacro letfn
+  &quot;[DOCSTRING]&quot;
+  {:style/indent [1 [[:defn]] :form]}
+  [fnspecs &amp; body]
+  ...cut for brevity...)
+</code></pre>
+
+<p>Don't worry if this looks intimidating. For most macros the indent spec should
+be either just a number, or one of the keywords <code>:defn</code> or <code>:form</code>. A full
+description of the spec is provided in the
+<a href="../indent_spec/">indent spec section of the manual</a>.</p>
+<p>If you <em>don't</em> want to use this feature, you can disable it by setting
+<code>cider-dynamic-indentation</code> to <code>nil</code> in your Emacs init file.</p>
+<pre><code class="el">(setq cider-dynamic-indentation nil)
+</code></pre>
+
+<h2 id="minibuffer-completion">Minibuffer completion</h2>
+<p>Out-of-the box CIDER uses the standard <code>completing-read</code> Emacs mechanism. While
+it's not fancy it certainly gets the job done (just press <kbd>TAB</kbd>). There
+are, however, ways to improve upon the standard completion if you wish to.</p>
+<h3 id="icomplete">icomplete</h3>
+<p><code>icomplete</code> is bundled with Emacs and enhances the default minibuffer completion:</p>
+<pre><code class="el">(require 'icomplete)
+</code></pre>
+
+<p>You can learn more about <code>icomplete</code>
+<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Icomplete.html">here</a>.</p>
+<h3 id="ido">ido</h3>
+<p><code>ido</code> is also bundled with Emacs and offers more features than <code>icomplete</code>.
+If you are using <code>ido</code>, be sure to use both <code>ido-everywhere</code>
+and <a href="https://github.com/DarwinAwardWinner/ido-completing-read-plus"><code>ido-completing-read+</code></a>.
+You might also want to install <a href="https://github.com/lewang/flx"><code>ido-flex</code></a>.</p>
+<h3 id="ivy-recommended">ivy (recommended)</h3>
+<p>If you're fine with installing a third-party package for enhanced minibuffer
+completion you can't go wrong with the modern and versatile
+<a href="http://oremacs.com/2015/04/16/ivy-mode/">ivy</a>.</p>
+<h2 id="pretty-printing">Pretty-printing</h2>
+<p>You can configure the function used by CIDER for pretty-printing evaluation
+results and other data using the <code>cider-pprint-fn</code> option.</p>
+<p>This can be one of three values (defaults to <code>pprint</code>):</p>
+<ul>
+<li>
+<p><code>pprint</code> to use the built-in <code>clojure.pprint/pprint</code>.</p>
+</li>
+<li>
+<p><code>fipp</code> to use the
+  <a href="https://github.com/brandonbloom/fipp">Fast Idiomatic Pretty-Printer</a>. This is
+  approximately 5-10x faster than <code>clojure.core/pprint</code>.</p>
+</li>
+<li>
+<p><code>puget</code> to use <a href="https://github.com/greglook/puget">Puget</a>, which builds on
+  Fipp to provide a
+  <a href="https://github.com/greglook/puget#canonical-representation">canonical serialization</a>
+  of data, at a slight performance cost.</p>
+</li>
+</ul>
+<p>Alternatively, <code>cider-pprint-fn</code> can be set to the namespace-qualified name of a
+Clojure function that takes a single argument and will pretty-print the value of
+said argument to <code>*out*</code>.</p>
+<pre><code class="el">(setq cider-pprint-fn &quot;user/my-pprint&quot;)
+</code></pre>
+
+<p>This function must be resolvable by CIDER at the time it is called (i.e. its
+containing namespace must have already been required).</p>
+<p>CIDER will bind <code>*print-length*</code>, <code>*print-level*</code>, <code>*print-meta*</code>, and
+<code>clojure.pprint/*print-right-margin*</code> when calling the pretty-printing
+function - the function you provide is expected to respect these options.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../indent_spec/" class="btn btn-neutral float-right" title="Indentation Specification">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../miscellaneous_features/" class="btn btn-neutral" title="Miscellaneous Features"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2016-2018 Bozhidar Batsov, Artur Malabarba and CIDER contributors</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/clojure-emacs/cider/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../miscellaneous_features/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../indent_spec/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

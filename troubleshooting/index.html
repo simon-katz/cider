@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Troubleshooting - CIDER: The Clojure Interactive Development Environment that Rocks</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Troubleshooting";
+    var mkdocs_page_input_path = "troubleshooting.md";
+    var mkdocs_page_url = "/troubleshooting/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CIDER: The Clojure Interactive Development Environment that Rocks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../up_and_running/">Up and Running</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../interactive_programming/">Interactive Programming</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using_the_repl/">Using the REPL</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../code_completion/">Code Completion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../navigating_stacktraces/">Navigating Stacktraces</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../running_tests/">Running Tests</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../debugging/">Debugging</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../managing_connections/">Managing Connections</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../miscellaneous_features/">Miscellaneous Features</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../configuration/">Configuration</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../indent_spec/">Indentation Specification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_packages/">Additional Packages</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../caveats/">Caveats</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Troubleshooting</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#debugging-cider-commands">Debugging CIDER commands</a></li>
+    
+
+    <li class="toctree-l2"><a href="#repl-not-starting">REPL not starting</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#debugging-the-repl-init">Debugging the REPL init</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#missing-nrepl-messages-buffer">Missing *nrepl-messages* buffer</a></li>
+    
+
+    <li class="toctree-l2"><a href="#cider-debug-complains-that-it-failed-to-instrument">cider-debug complains that it “failed to instrument ...”</a></li>
+    
+
+    <li class="toctree-l2"><a href="#debugging-freezes-lock-ups">Debugging freezes &amp; lock-ups</a></li>
+    
+
+    <li class="toctree-l2"><a href="#warning-saying-you-have-to-use-nrepl-0212">Warning saying you have to use nREPL 0.2.12+</a></li>
+    
+
+    <li class="toctree-l2"><a href="#missing-clojure-function-after-cider-update">Missing clojure-... function after CIDER update</a></li>
+    
+
+    <li class="toctree-l2"><a href="#i-upgraded-cider-using-packageel-and-it-broke">I upgraded CIDER using package.el and it broke</a></li>
+    
+
+    <li class="toctree-l2"><a href="#i-upgraded-cider-using-packageel-and-nothing-changed">I upgraded CIDER using package.el and nothing changed</a></li>
+    
+
+    <li class="toctree-l2"><a href="#cider-complains-of-the-cider-nrepl-version">CIDER complains of the cider-nrepl version</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#you-see-a-number-like-xxx-and-youre-starting-the-repl-with-cider-connect">You see a number like X.X.X, and you're starting the REPL with cider-connect</a></li>
+        
+            <li><a class="toctree-l3" href="#you-see-not-installed-or-nil-and-youre-starting-the-repl-with-cider-connect">You see not installed or nil, and you're starting the REPL with cider-connect</a></li>
+        
+            <li><a class="toctree-l3" href="#you-see-not-installed-or-nil-and-youre-starting-the-repl-with-cider-jack-in">You see not installed or nil, and you're starting the REPL with cider-jack-in</a></li>
+        
+            <li><a class="toctree-l3" href="#you-see-a-number-like-xxx-and-youre-starting-the-repl-with-cider-jack-in">You see a number like X.X.X, and you're starting the REPL with cider-jack-in</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_resources/">Additional Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../hacking_on_cider/">Hacking on CIDER</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about/team/">Team</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/support/">Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/release_policy/">Release Policy</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/changelog/">Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/logo/">Logo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CIDER: The Clojure Interactive Development Environment that Rocks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/clojure-emacs/cider/edit/master/docs/troubleshooting.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>In case you run into issues here are a few tips that can help you diagnose the
+problem.</p>
+<p>Generally, it's not a bad idea to configure Emacs to spit the backtrace on error
+(instead of just logging the error in the <code>*Messages*</code> buffer). You can toggle
+this behavior by using <kbd>M-x</kbd> <code>toggle-debug-on-error</code>.</p>
+<p>Another good idea is to check the exchange of requests and responses between
+CIDER and the nREPL server. You can find them in the <code>*nrepl-messages*</code> buffer,
+provided you've enabled nREPL message logging.</p>
+<h2 id="debugging-cider-commands">Debugging CIDER commands</h2>
+<p>Emacs features a super powerful built-in
+<a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Edebug.html">Emacs Lisp debugger</a>
+and using it is the best way to diagnose problems of any kind.</p>
+<p>Here's a <a href="https://www.youtube.com/watch?v=odkYXXYOxpo">great crash course</a> on
+using the debugger.</p>
+<p>To debug some command you need to do the following:</p>
+<ul>
+<li>Figure out the name of the command you want to debug (e.g. by using <kbd>C-h k</kbd>
+to see which command is associated with some keybinding)</li>
+<li>Find the source of the command (e.g. by using <kbd>M-x</kbd> <code>find-function</code>
+  <kbd>RET</kbd> <code>function-name</code>)</li>
+<li>Press <kbd>C-u C-M-x</kbd> while in the body of the function</li>
+<li>Run the command again</li>
+</ul>
+<p>At this point you'll be dropped in the debugger and you can step forward until
+you find the problem.</p>
+<h2 id="repl-not-starting">REPL not starting</h2>
+<p>Make sure that your CIDER version matches your <code>cider-nrepl</code> version. Check
+the contents of the <code>*Messages*</code> buffer for CIDER-related errors. You should
+also check the nREPL messages passed between CIDER and nREPL in
+<code>*nrepl-messages*</code>. If you don't see anything useful there it's time to bring
+out the big guns.</p>
+<h3 id="debugging-the-repl-init">Debugging the REPL init</h3>
+<p>To debug CIDER's REPL initialization it's a good idea to hook into one of its
+entry points. Add a breakpoint to <code>cider-make-repl</code> (<kbd>C-u C-M-x</kbd>, while
+in its body). Next time you start CIDER you'll be dropped in the debugger and
+you can step forward until you find the problem.</p>
+<h2 id="missing-nrepl-messages-buffer">Missing <code>*nrepl-messages*</code> buffer</h2>
+<p>nREPL message logging is not enabled by default.  Set <code>nrepl-log-messages</code> to
+<code>t</code> to activate it. Alternatively you can use <kbd>M-x</kbd> <code>nrepl-toggle-message-logging</code>
+to enable/disable logging temporary within your current Emacs session.</p>
+<h2 id="cider-debug-complains-that-it-failed-to-instrument"><code>cider-debug</code> complains that it “failed to instrument ...”</h2>
+<p>In the REPL buffer, issue the following.</p>
+<pre><code>your.namespace&gt; (ns cider.nrepl.middleware.util.instrument)
+cider.nrepl.middleware.util.instrument&gt; (def verbose-debug true)
+</code></pre>
+<p>This will cause CIDER to print extensive information to the REPL buffer when you
+try to debug an expression (e.g., with <kbd>C-u
+C-M-x</kbd>). <a href="https://github.com/clojure-emacs/cider-nrepl/issues/new">File an issue</a>
+and copy this information.</p>
+<h2 id="debugging-freezes-lock-ups">Debugging freezes &amp; lock-ups</h2>
+<p>Sometimes a CIDER command might hang for a while (e.g. due to a bug or a
+configuration issue). Such problems are super annoying, but are relatively easy
+to debug. Here are a few steps you can take in such situations:</p>
+<ul>
+<li>Do <kbd>M-x</kbd> <code>toggle-debug-on-quit</code></li>
+<li>Reproduce the problem</li>
+<li>Hit <kbd>C-g</kbd> around 10 seconds into the hang</li>
+</ul>
+<p>This will bring up a backtrace with the entire function stack, including
+function arguments. So you should be able to figure out what's going on (or at
+least what's being required).</p>
+<h2 id="warning-saying-you-have-to-use-nrepl-0212">Warning saying you have to use nREPL 0.2.12+</h2>
+<p>CIDER currently requires at least nREPL 0.2.12 to work properly (there were some
+nasty bugs in older version and no support for tracking where some var was
+defined in the source code). Leiningen users can add this to their
+<code>profiles.clj</code> to force the proper dependency:</p>
+<pre><code class="clojure">{:repl {:dependencies [[org.clojure/tools.nrepl &quot;0.2.12&quot;]]}}
+</code></pre>
+
+<p>Make sure you add the newer nREPL dependency to the <code>:dependencies</code> key instead
+of <code>:plugins</code> (where <code>cider-nrepl</code> Lein plugin resides). That's a pretty common
+mistake.</p>
+<p>Generally you're advised to use the newest nREPL with CIDER, as bugs get fixed
+in pretty much every release.</p>
+<p>Note, that running <code>cider-jack-in</code> from outside the scope of a project will
+result in the <strong>older (0.2.6) nREPL dependency being used</strong> (at least on Leiningen
+2.5.1). This is likely a Leiningen bug.</p>
+<h2 id="missing-clojure-function-after-cider-update">Missing clojure-... function after CIDER update</h2>
+<p>Most likely you've updated CIDER, without updating <code>clojure-mode</code> as well.</p>
+<p>CIDER depends on <code>clojure-mode</code> and you should always update them together, as
+the latest CIDER version might depend on functionality present only in the latest
+<code>clojure-mode</code> version.</p>
+<h2 id="i-upgraded-cider-using-packageel-and-it-broke">I upgraded CIDER using <code>package.el</code> and it broke</h2>
+<p>The built-in package manager isn't perfect and sometimes it messes up.  If you
+just updated and encountered an error you should try the following before
+opening an issue: Go into the <code>.emacs.d/elpa</code> directory, delete any folders
+related to CIDER, restart Emacs and then re-install the missing packages.  Note
+that the order here matters.</p>
+<h2 id="i-upgraded-cider-using-packageel-and-nothing-changed">I upgraded CIDER using <code>package.el</code> and nothing changed</h2>
+<p>Emacs doesn't load the new files, it only installs them on disk.  To see the
+effect of changes you have to restart Emacs.</p>
+<h2 id="cider-complains-of-the-cider-nrepl-version">CIDER complains of the <code>cider-nrepl</code> version</h2>
+<p>This is a warning displayed on the REPL buffer when it starts, and usually looks like this:</p>
+<blockquote>
+<p><strong>WARNING:</strong> CIDER's version (0.12.0) does not match cider-nrepl's version (...). Things will break!</p>
+</blockquote>
+<p>where <code>...</code> might be an actual version, like <code>0.10.0</code>, or it might be <code>not installed</code> or <code>nil</code>.
+The solution to this depends on what you see and on what you're doing.</p>
+<h3 id="you-see-a-number-like-xxx-and-youre-starting-the-repl-with-cider-connect">You see a number like <code>X.X.X</code>, and you're starting the REPL with <code>cider-connect</code></h3>
+<p>Your project specifies the wrong version for the cider-nrepl middleware. See the
+<a href="http://cider.readthedocs.org/en/latest/installation/#ciders-nrepl-middleware">instructions</a>
+on the Installation section.</p>
+<h3 id="you-see-not-installed-or-nil-and-youre-starting-the-repl-with-cider-connect">You see <code>not installed</code> or <code>nil</code>, and you're starting the REPL with <code>cider-connect</code></h3>
+<p>To use <code>cider-connect</code> you need to add the cider-nrepl middleware to your project. See the
+<a href="http://cider.readthedocs.org/en/latest/installation/#ciders-nrepl-middleware">instructions</a>
+on the Installation section.</p>
+<h3 id="you-see-not-installed-or-nil-and-youre-starting-the-repl-with-cider-jack-in">You see <code>not installed</code> or <code>nil</code>, and you're starting the REPL with <code>cider-jack-in</code></h3>
+<ul>
+<li>Do <code>C-h v cider-inject-dependencies-at-jack-in</code>, and check that this variable is non-nil.</li>
+<li>Make sure your project depends on at least Clojure <code>1.7.0</code>.</li>
+<li>If you use leiningen, make sure your <code>lein --version</code> is at least <code>2.6.1</code>.</li>
+<li>If you use boot and you've changed <code>cider-boot-parameters</code>, that's probably the cause.</li>
+</ul>
+<p>If the above doesn't work, you can try specifying the cider-nrepl middleware
+manually, as per the
+<a href="http://cider.readthedocs.org/en/latest/installation/#ciders-nrepl-middleware">instructions</a>
+on the Installation section.</p>
+<h3 id="you-see-a-number-like-xxx-and-youre-starting-the-repl-with-cider-jack-in">You see a number like <code>X.X.X</code>, and you're starting the REPL with <code>cider-jack-in</code></h3>
+<p>This means you're manually adding the cider-nrepl middleware in your project,
+but you shouldn't do that because <code>cider-jack-in</code> already does that for
+you. Look into the following files, and ensure you've removed all references to
+<code>cider-nrepl</code> and <code>tools.nrepl</code>: <code>project.clj</code>, <code>build.boot</code>,
+<code>~/.lein/profiles.clj</code> and <code>~/.boot/profile.boot</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../caveats/" class="btn btn-neutral" title="Caveats"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2016-2018 Bozhidar Batsov, Artur Malabarba and CIDER contributors</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/clojure-emacs/cider/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../caveats/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

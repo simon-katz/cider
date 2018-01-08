@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Interactive Programming - CIDER: The Clojure Interactive Development Environment that Rocks</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Interactive Programming";
+    var mkdocs_page_input_path = "interactive_programming.md";
+    var mkdocs_page_url = "/interactive_programming/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CIDER: The Clojure Interactive Development Environment that Rocks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../up_and_running/">Up and Running</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Interactive Programming</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#using-cider-mode">Using cider-mode</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using_the_repl/">Using the REPL</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../code_completion/">Code Completion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../navigating_stacktraces/">Navigating Stacktraces</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../running_tests/">Running Tests</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../debugging/">Debugging</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../managing_connections/">Managing Connections</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../miscellaneous_features/">Miscellaneous Features</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../configuration/">Configuration</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../indent_spec/">Indentation Specification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_packages/">Additional Packages</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../caveats/">Caveats</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_resources/">Additional Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../hacking_on_cider/">Hacking on CIDER</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about/team/">Team</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/support/">Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/release_policy/">Release Policy</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/changelog/">Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/logo/">Logo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CIDER: The Clojure Interactive Development Environment that Rocks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Interactive Programming</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/clojure-emacs/cider/edit/master/docs/interactive_programming.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>The idea of interactive programming is at the very heart of CIDER.</p>
+<p>Programmers are expected to program in a very dynamic and incremental manner,
+constantly re-evaluating existing Clojure definitions and adding new ones to
+their running applications. You never stop/start a Clojure application while
+using CIDER - you're constantly interacting with it and changing it.</p>
+<p>CIDER comes with a handy minor mode called <code>cider-mode</code> (complementing
+<code>clojure-mode</code>) that allows you to evaluate code in your Clojure source
+files and load it directly in the REPL. <code>cider-mode</code> is the primary
+way you're supposed to be interacting with your REPL process. If you
+want to get productive with CIDER, you'll have to get intimately familiar
+with it.</p>
+<h2 id="using-cider-mode">Using cider-mode</h2>
+<p>Here's a list of <code>cider-mode</code>'s keybindings:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Keyboard shortcut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cider-eval-last-sexp</code></td>
+<td><kbd>C-x C-e</kbd> <br/> <kbd>C-c C-e</kbd></td>
+<td>Evaluate the form preceding point and display the result in the echo area and/or in an buffer overlay (according to <code>cider-use-overlays</code>).  If invoked with a prefix argument, insert the result into the current buffer.</td>
+</tr>
+<tr>
+<td><code>cider-eval-last-sexp-and-replace</code></td>
+<td><kbd>C-c C-v w</kbd></td>
+<td>Evaluate the form preceding point and replace it with its result.</td>
+</tr>
+<tr>
+<td><code>cider-eval-last-sexp-to-repl</code></td>
+<td><kbd>C-c M-e</kbd></td>
+<td>Evaluate the form preceding point and output it result to the REPL buffer.  If invoked with a prefix argument, takes you to the REPL buffer after being invoked.</td>
+</tr>
+<tr>
+<td><code>cider-insert-last-sexp-in-repl</code></td>
+<td><kbd>C-c M-p</kbd></td>
+<td>Load the form preceding point in the REPL buffer.</td>
+</tr>
+<tr>
+<td><code>cider-pprint-eval-last-sexp</code></td>
+<td><kbd>C-c C-p</kbd></td>
+<td>Evaluate the form preceding point and pretty-print the result in a popup buffer. If invoked with a prefix argument, insert the result into the current buffer as a comment.</td>
+</tr>
+<tr>
+<td><code>cider-pprint-eval-defun-at-point</code></td>
+<td><kbd>C-c C-f</kbd></td>
+<td>Evaluate the top level form under point and pretty-print the result in a popup buffer. If invoked with a prefix argument, insert the result into the current buffer as a comment.</td>
+</tr>
+<tr>
+<td><code>cider-eval-defun-at-point</code></td>
+<td><kbd>C-M-x</kbd> <br/> <kbd>C-c C-c</kbd></td>
+<td>Evaluate the top level form under point and display the result in the echo area.</td>
+</tr>
+<tr>
+<td><code>cider-eval-sexp-at-point</code></td>
+<td><kbd>C-c C-v v</kbd></td>
+<td>Evaluate the form around point.</td>
+</tr>
+<tr>
+<td><code>cider-eval-defun-at-point</code></td>
+<td><kbd>C-u C-M-x</kbd> <br/> <kbd>C-u C-c C-c</kbd></td>
+<td>Debug the top level form under point and walk through its evaluation</td>
+</tr>
+<tr>
+<td><code>cider-eval-region</code></td>
+<td><kbd>C-c C-v r</kbd></td>
+<td>Evaluate the region and display the result in the echo area.</td>
+</tr>
+<tr>
+<td><code>cider-interrupt</code></td>
+<td><kbd>C-c C-b</kbd></td>
+<td>Interrupt any pending evaluations.</td>
+</tr>
+<tr>
+<td><code>cider-macroexpand-1</code></td>
+<td><kbd>C-c C-m</kbd></td>
+<td>Invoke <code>macroexpand-1</code> on the form at point and display the result in a macroexpansion buffer.  If invoked with a prefix argument, <code>macroexpand</code> is used instead of <code>macroexpand-1</code>.</td>
+</tr>
+<tr>
+<td><code>cider-macroexpand-all</code></td>
+<td><kbd>C-c M-m</kbd></td>
+<td>Invoke <code>clojure.walk/macroexpand-all</code> on the form at point and display the result in a macroexpansion buffer.</td>
+</tr>
+<tr>
+<td><code>cider-eval-ns-form</code></td>
+<td><kbd>C-c C-v n</kbd></td>
+<td>Eval the ns form.</td>
+</tr>
+<tr>
+<td><code>cider-repl-set-ns</code></td>
+<td><kbd>C-c M-n</kbd></td>
+<td>Switch the namespace of the REPL buffer to the namespace of the current buffer.</td>
+</tr>
+<tr>
+<td><code>cider-switch-to-repl-buffer</code></td>
+<td><kbd>C-c C-z</kbd></td>
+<td>Switch to the relevant REPL buffer. Use a prefix argument to change the namespace of the REPL buffer to match the currently visited source file.</td>
+</tr>
+<tr>
+<td><code>cider-switch-to-repl-buffer</code></td>
+<td><kbd>C-u C-u C-c C-z</kbd></td>
+<td>Switch to the REPL buffer based on a user prompt for a directory.</td>
+</tr>
+<tr>
+<td><code>cider-load-buffer-and-switch-to-repl-buffer</code></td>
+<td><kbd>C-c M-z</kbd></td>
+<td>Load (eval) the current buffer and switch to the relevant REPL buffer. Use a prefix argument to change the namespace of the REPL buffer to match the currently visited source file.</td>
+</tr>
+<tr>
+<td><code>cider-display-connection-info</code></td>
+<td><kbd>C-c M-d</kbd></td>
+<td>Display default REPL connection details, including project directory name, buffer namespace, host and port.</td>
+</tr>
+<tr>
+<td><code>cider-rotate-default-connection</code></td>
+<td><kbd>C-c M-r</kbd></td>
+<td>Rotate and display the default nREPL connection.</td>
+</tr>
+<tr>
+<td><code>cider-find-and-clear-repl-output</code></td>
+<td><kbd>C-c C-o</kbd></td>
+<td>Clear the last output in the REPL buffer. With a prefix argument it will clear the entire REPL buffer, leaving only a prompt. Useful if you're running the REPL buffer in a side by side buffer.</td>
+</tr>
+<tr>
+<td><code>cider-load-buffer</code></td>
+<td><kbd>C-c C-k</kbd></td>
+<td>Load (eval) the current buffer.</td>
+</tr>
+<tr>
+<td><code>cider-load-file</code></td>
+<td><kbd>C-c C-l</kbd></td>
+<td>Load (eval) a Clojure file.</td>
+</tr>
+<tr>
+<td><code>cider-load-all-files</code></td>
+<td><kbd>C-c C-M-l</kbd></td>
+<td>Load (eval) all Clojure files below a directory.</td>
+</tr>
+<tr>
+<td><code>cider-refresh</code></td>
+<td><kbd>C-c C-x</kbd></td>
+<td>Reload all modified files on the classpath. If invoked with a prefix argument, reload all files on the classpath. If invoked with a double prefix argument, clear the state of the namespace tracker before reloading.</td>
+</tr>
+<tr>
+<td><code>cider-doc</code></td>
+<td><kbd>C-c C-d d</kbd> <br/> <kbd>C-c C-d C-d</kbd></td>
+<td>Display doc string for the symbol at point.  If invoked with a prefix argument, or no symbol is found at point, prompt for a symbol.</td>
+</tr>
+<tr>
+<td><code>cider-javadoc</code></td>
+<td><kbd>C-c C-d j</kbd> <br/> <kbd>C-c C-d C-j</kbd></td>
+<td>Display JavaDoc (in your default browser) for the symbol at point.  If invoked with a prefix argument, or no symbol is found at point, prompt for a symbol.</td>
+</tr>
+<tr>
+<td><code>cider-grimoire</code></td>
+<td><kbd>C-c C-d r</kbd> <br/> <kbd>C-c C-d C-r</kbd></td>
+<td>Lookup symbol in Grimoire.</td>
+</tr>
+<tr>
+<td><code>cider-grimoire-web</code></td>
+<td><kbd>C-c C-d w</kbd> <br/> <kbd>C-c C-d C-w</kbd></td>
+<td>Open the grimoire documentation for symbol in a web browser.</td>
+</tr>
+<tr>
+<td><code>cider-apropos</code></td>
+<td><kbd>C-c C-d a</kbd> <br/> <kbd>C-c C-d C-a</kbd></td>
+<td>Apropos search for functions/vars.</td>
+</tr>
+<tr>
+<td><code>cider-apropos-documentation</code></td>
+<td><kbd>C-c C-d f</kbd> <br/> <kbd>C-c C-d C-f</kbd></td>
+<td>Apropos search for documentation.</td>
+</tr>
+<tr>
+<td><code>cider-apropos-documentation-select</code></td>
+<td><kbd>C-c C-d e</kbd> <br/> <kbd>C-c C-d C-e</kbd></td>
+<td>Apropos search for documentation &amp; select.</td>
+</tr>
+<tr>
+<td><code>cider-inspect</code></td>
+<td><kbd>C-c M-i</kbd></td>
+<td>Inspect expression. Will act on expression at point if present.</td>
+</tr>
+<tr>
+<td><code>cider-toggle-trace-var</code></td>
+<td><kbd>C-c M-t v</kbd></td>
+<td>Toggle var tracing.</td>
+</tr>
+<tr>
+<td><code>cider-toggle-trace-ns</code></td>
+<td><kbd>C-c M-t n</kbd></td>
+<td>Toggle namespace tracing.</td>
+</tr>
+<tr>
+<td><code>cider-undef</code></td>
+<td><kbd>C-c C-u</kbd></td>
+<td>Undefine a symbol. If invoked with a prefix argument, or no symbol is found at point, prompt for a symbol.</td>
+</tr>
+<tr>
+<td><code>cider-test-run-test</code></td>
+<td><kbd>C-c C-t t</kbd> <br/> <kbd>C-c C-t C-t</kbd></td>
+<td>Run test at point.</td>
+</tr>
+<tr>
+<td><code>cider-test-rerun-test</code></td>
+<td><kbd>C-c C-t g</kbd> <br/> <kbd>C-c C-t C-g</kbd></td>
+<td>Re-run the last test you ran.</td>
+</tr>
+<tr>
+<td><code>cider-test-run-ns-tests</code></td>
+<td><kbd>C-c C-t n</kbd> <br/> <kbd>C-c C-t C-n</kbd></td>
+<td>Run tests for current namespace.</td>
+</tr>
+<tr>
+<td><code>cider-test-run-loaded-tests</code></td>
+<td><kbd>C-c C-t l</kbd> <br/> <kbd>C-c C-t C-l</kbd></td>
+<td>Run tests for all loaded namespaces.</td>
+</tr>
+<tr>
+<td><code>cider-test-run-project-tests</code></td>
+<td><kbd>C-c C-t p</kbd> <br/> <kbd>C-c C-t C-p</kbd></td>
+<td>Run tests for all project namespaces. This loads the additional namespaces.</td>
+</tr>
+<tr>
+<td><code>cider-test-rerun-failed-tests</code></td>
+<td><kbd>C-c C-t r</kbd> <br/> <kbd>C-c C-t C-r</kbd></td>
+<td>Re-run test failures/errors.</td>
+</tr>
+<tr>
+<td><code>cider-test-show-report</code></td>
+<td><kbd>C-c C-t b</kbd> <br/> <kbd>C-c C-t C-b</kbd></td>
+<td>Show the test report buffer.</td>
+</tr>
+<tr>
+<td><code>cider-find-var</code></td>
+<td><kbd>M-.</kbd></td>
+<td>Jump to the definition of a symbol.  If invoked with a prefix argument, or no symbol is found at point, prompt for a symbol.</td>
+</tr>
+<tr>
+<td><code>cider-find-resource</code></td>
+<td><kbd>C-c M-.</kbd></td>
+<td>Jump to the resource referenced by the string at point.</td>
+</tr>
+<tr>
+<td><code>cider-find-ns</code></td>
+<td><kbd>C-c C-.</kbd></td>
+<td>Jump to some namespace on the classpath.</td>
+</tr>
+<tr>
+<td><code>cider-pop-back</code></td>
+<td><kbd>M-,</kbd></td>
+<td>Return to your pre-jump location.</td>
+</tr>
+<tr>
+<td><code>complete-symbol</code></td>
+<td><kbd>M-TAB</kbd></td>
+<td>Complete the symbol at point.</td>
+</tr>
+<tr>
+<td><code>cider-quit</code></td>
+<td><kbd>C-c C-q</kbd></td>
+<td>Quit the current nREPL connection. With a prefix argument it will quit all connections.</td>
+</tr>
+</tbody>
+</table>
+<p>There's no need to memorize this list. In any Clojure buffer with <code>cider-mode</code>
+active you'll have a CIDER menu available, which lists all the most important
+commands and their keybindings. You can also invoke <code>C-h f RET cider-mode</code> to
+get a list of the keybindings for <code>cider-mode</code>.</p>
+<p><img alt="CIDER interactions menu" src="../images/menu_example.png" /></p>
+<p>An even better solution would be to install <a href="https://github.com/justbur/emacs-which-key">which-key</a>, which will
+automatically show you a list of available keybindings as you start typing some
+keys. This will simplify your interactions with CIDER quite a lot (especially in
+the beginning). Here's what you'd see if you typed <kbd>C-c C-d</kbd> in a
+Clojure buffer:</p>
+<p><img alt="CIDER which-key" src="../images/cider-which-key.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../using_the_repl/" class="btn btn-neutral float-right" title="Using the REPL">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../up_and_running/" class="btn btn-neutral" title="Up and Running"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2016-2018 Bozhidar Batsov, Artur Malabarba and CIDER contributors</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/clojure-emacs/cider/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../up_and_running/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../using_the_repl/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

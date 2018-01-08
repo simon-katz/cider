@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Miscellaneous Features - CIDER: The Clojure Interactive Development Environment that Rocks</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Miscellaneous Features";
+    var mkdocs_page_input_path = "miscellaneous_features.md";
+    var mkdocs_page_url = "/miscellaneous_features/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CIDER: The Clojure Interactive Development Environment that Rocks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../up_and_running/">Up and Running</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../interactive_programming/">Interactive Programming</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using_the_repl/">Using the REPL</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../code_completion/">Code Completion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../navigating_stacktraces/">Navigating Stacktraces</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../running_tests/">Running Tests</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../debugging/">Debugging</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../managing_connections/">Managing Connections</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Miscellaneous Features</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#evaluating-clojure-code-in-the-minibuffer">Evaluating Clojure code in the minibuffer</a></li>
+    
+
+    <li class="toctree-l2"><a href="#using-a-scratchpad">Using a scratchpad</a></li>
+    
+
+    <li class="toctree-l2"><a href="#macroexpansion">Macroexpansion</a></li>
+    
+
+    <li class="toctree-l2"><a href="#value-inspection">Value inspection</a></li>
+    
+
+    <li class="toctree-l2"><a href="#enlighten-display-local-values">Enlighten (display local values)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#code-reloading">Code reloading</a></li>
+    
+
+    <li class="toctree-l2"><a href="#tracing-function-execution">Tracing function execution</a></li>
+    
+
+    <li class="toctree-l2"><a href="#classpath-browser">Classpath browser</a></li>
+    
+
+    <li class="toctree-l2"><a href="#namespace-browser">Namespace browser</a></li>
+    
+
+    <li class="toctree-l2"><a href="#spec-browser">Spec browser</a></li>
+    
+
+    <li class="toctree-l2"><a href="#documentation-buffers-include-see-also-references">Documentation buffers include "See Also" references</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../configuration/">Configuration</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../indent_spec/">Indentation Specification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_packages/">Additional Packages</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../caveats/">Caveats</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_resources/">Additional Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../hacking_on_cider/">Hacking on CIDER</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about/team/">Team</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/support/">Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/release_policy/">Release Policy</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/changelog/">Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/logo/">Logo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CIDER: The Clojure Interactive Development Environment that Rocks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Miscellaneous Features</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/clojure-emacs/cider/edit/master/docs/miscellaneous_features.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>CIDER packs a ton of extra functionality, besides basic Clojure code
+evaluation. Much of the functionality is centered around additional major modes,
+which provide you with convenient ways to get something done or inspect
+something.</p>
+<h2 id="evaluating-clojure-code-in-the-minibuffer">Evaluating Clojure code in the minibuffer</h2>
+<p>You can evaluate Clojure code in the minibuffer from pretty much everywhere by
+using <kbd>M-x</kbd> <code>cider-read-and-eval</code> (bound in <code>cider-mode</code> buffers to
+<kbd>C-c M-:</kbd>).  <kbd>TAB</kbd> completion will work in the minibuffer,
+just as in a REPL/source buffer.</p>
+<p>Pressing <kbd>C-c C-v .</kbd> in a Clojure buffer will insert the defun
+at point into the minibuffer for evaluation. This way you can pass arguments
+to the function and evaluate it and see the result in the minibuffer.</p>
+<p>You can also enable <code>eldoc-mode</code> in the minibuffer by adding the following to your
+config:</p>
+<pre><code class="el">(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+</code></pre>
+
+<p>You can also enable <code>paredit</code> or <code>smartparens</code> for minibuffer evaluations:</p>
+<pre><code class="el">(add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
+</code></pre>
+
+<h2 id="using-a-scratchpad">Using a scratchpad</h2>
+<p>CIDER provides a simple way to create a Clojure scratchpad via the
+<kbd>M-x</kbd> <code>cider-scratch</code> command. It provides a great way to
+play around with some code, without having to create source files
+or pollute the REPL buffer.</p>
+<p>In many ways the CIDER scratchpad is similar to Emacs's own <code>*scratch*</code> buffer.</p>
+<h2 id="macroexpansion">Macroexpansion</h2>
+<p>Pressing <kbd>C-c C-m</kbd> after some form in a source buffer or the REPL will
+result in a new buffer, showing the macroexpansion of the form in
+question. You'll have access to additional keybindings in the macroexpansion
+buffer (which is internally using <code>cider-macroexpansion-mode</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Keyboard shortcut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>m</kbd></td>
+<td>Invoke <code>macroexpand-1</code> on the form at point and replace the original form with its expansion.  If invoked with a prefix argument, <code>macroexpand</code> is used instead of <code>macroexpand-1</code>.</td>
+</tr>
+<tr>
+<td><kbd>a</kbd></td>
+<td>Invoke <code>clojure.walk/macroexpand-all</code> on the form at point and replace the original form with its expansion.</td>
+</tr>
+<tr>
+<td><kbd>g</kbd></td>
+<td>The prior macroexpansion is performed again and the current contents of the macroexpansion buffer are replaced with the new expansion.</td>
+</tr>
+<tr>
+<td><kbd>C-/</kbd> <br/> <kbd>u</kbd></td>
+<td>Undo the last inplace expansion performed in the macroexpansion buffer.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="value-inspection">Value inspection</h2>
+<p>Pressing <kbd>C-c M-i</kbd> after some form in a source buffer or the REPL will
+result in a new buffer, showing the structure of the result of the form in question.
+You can also use <kbd>C-u C-c M-i</kbd> to inspect the result of the current top-level
+form and <kbd>C-u C-u C-c M-i</kbd> to read an expression from the minibuffer and
+inspect its result.</p>
+<p>You'll have access to additional keybindings in the inspector buffer (which is
+internally using <code>cider-inspector-mode</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Keyboard shortcut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>Tab</kbd> or <kbd>Shift-Tab</kbd></td>
+<td>Navigate inspectable sub-objects</td>
+</tr>
+<tr>
+<td><kbd>Return</kbd></td>
+<td>Inspect sub-objects</td>
+</tr>
+<tr>
+<td><kbd>l</kbd></td>
+<td>Pop to the parent object</td>
+</tr>
+<tr>
+<td><kbd>g</kbd></td>
+<td>Refresh the inspector (e.g. if viewing an atom/ref/agent)</td>
+</tr>
+<tr>
+<td><kbd>SPC</kbd></td>
+<td>Jump to next page in paginated view</td>
+</tr>
+<tr>
+<td><kbd>M-SPC</kbd></td>
+<td>Jump to previous page in paginated view</td>
+</tr>
+<tr>
+<td><kbd>s</kbd></td>
+<td>Set a new page size in paginated view</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enlighten-display-local-values">Enlighten (display local values)</h2>
+<p>This feature displays the value of locals in realtime, as your code is being
+executed. This is somewhat akin to one of the features of the Light Table
+editor.</p>
+<ul>
+<li>To turn it on, issue <kbd>M-x</kbd> <code>cider-enlighten-mode</code>.</li>
+<li>To use it, evaluate your functions one at a time (e.g., use <kbd>C-M-x</kbd> or
+<kbd>C-x  C-e</kbd>, because <kbd>C-c C-k</kbd> won't work).</li>
+</ul>
+<p>That's it! Once your code executes, the regular old buffer on the left will turn
+into the brilliant show of lights on the right.</p>
+<p align="center">
+  <img src="images/enlighten_disabled.png" height="300" />
+  <img src="images/enlighten_enabled.png" height="300" />
+</p>
+
+<p>To stop displaying the locals you'll have to disable <code>cider-enlighten-mode</code>
+and reevaluate the definitions you had instrumented previously.</p>
+<p>You can also trigger this on specific functions (without having to turn on the
+minor mode) by writing <code>#light</code> before the <code>(def</code> and reevaluating it.</p>
+<h2 id="code-reloading">Code reloading</h2>
+<p><code>cider-refresh</code> wraps
+<a href="https://github.com/clojure/tools.namespace">clojure.tools.namespace</a>, and as
+such the same
+<a href="https://github.com/clojure/tools.namespace#reloading-code-motivation">benefits</a>
+and
+<a href="https://github.com/clojure/tools.namespace#reloading-code-preparing-your-application">caveats</a>
+regarding writing reloadable code also apply.</p>
+<p>Calling <code>cider-refresh</code> will cause all modified Clojure files on the classpath
+to be reloaded. You can also provide a single prefix argument to reload all
+Clojure files on the classpath unconditionally, or a double prefix argument to
+first clear the state of the namespace tracker before reloading.</p>
+<p>The above three operations are analogous to
+<a href="http://clojure.github.io/tools.namespace/#clojure.tools.namespace.repl/refresh"><code>clojure.tools.namespace.repl/refresh</code></a>,
+<a href="http://clojure.github.io/tools.namespace/#clojure.tools.namespace.repl/refresh-all"><code>clojure.tools.namespace.repl/refresh-all</code></a>
+and
+<a href="http://clojure.github.io/tools.namespace/#clojure.tools.namespace.repl/clear"><code>clojure.tools.namespace.repl/clear</code></a>
+(followed by a normal refresh), respectively.</p>
+<ul>
+<li>You can define Clojure functions to be called before reloading, and after a
+  successful reload, when using <code>cider-refresh</code>:</li>
+</ul>
+<pre><code class="el">(setq cider-refresh-before-fn &quot;user/stop-system!&quot;
+      cider-refresh-after-fn &quot;user/start-system!&quot;)
+</code></pre>
+
+<ul>
+<li>
+<p>These must be set to the namespace-qualified names of vars bound to functions
+  of no arguments. The functions must be synchronous (blocking), and are
+  expected to be side-effecting - they will always be executed serially, without
+  retries.</p>
+</li>
+<li>
+<p>By default, messages regarding the status of the in-progress reload will be
+  displayed in the echo area after you call <code>cider-refresh</code>. The same
+  information will also be recorded in the <code>*cider-refresh-log*</code> buffer, along
+  with anything printed to <code>*out*</code> or <code>*err*</code> by <code>cider-refresh-before-fn</code> and
+  <code>cider-refresh-start-fn</code>.</p>
+</li>
+<li>
+<p>You can make the <code>*cider-refresh-log*</code> buffer display automatically after you
+  call <code>cider-refresh</code> by setting the <code>cider-refresh-show-log-buffer</code> variable
+  to a non-nil value (this will also prevent any related messages from also
+  being displayed in the echo area):</p>
+</li>
+</ul>
+<pre><code class="el">(setq cider-refresh-show-log-buffer t)
+</code></pre>
+
+<ul>
+<li>By default, all modified Clojure buffers are prompted to be saved. This
+  behaviour can be customized using <code>cider-save-files-on-cider-refresh</code>.</li>
+</ul>
+<h2 id="tracing-function-execution">Tracing function execution</h2>
+<p>You can trace the results produced by functions using <kbd>C-c M-t v</kbd>.  The
+command will prompt you for the name of the function you want to trace.
+Evaluating the command again for the same function will result in the function
+being untraced.</p>
+<p><img alt="Tracing" src="../images/tracing.png" /></p>
+<p>You can also use <kbd>C-c M-t n</kbd> to toggle tracing on and off for an entire
+namespace.</p>
+<h2 id="classpath-browser">Classpath browser</h2>
+<p>You can easily browse the items on your classpath with the command
+<kbd>M-x</kbd> <code>cider-classpath</code>.</p>
+<p>Here you can see it in action:</p>
+<p><img alt="Classpath Browser" src="../images/classpath_browser.png" /></p>
+<p>Press <kbd>RET</kbd> on a classpath entry to navigate into it.</p>
+<h2 id="namespace-browser">Namespace browser</h2>
+<p>You can browse the contents of any loaded namespace with the command
+<kbd>M-x</kbd> <code>cider-browse-ns</code>.  The command will prompt you for the namespace
+to browse.</p>
+<p><img alt="Namespace Browser" src="../images/ns_browser.png" /></p>
+<p>You can also browse all available namespaces with <kbd>M-x</kbd>
+<code>cider-browse-ns-all</code>.</p>
+<p>There are a bunch of useful keybindings that are defined in browser buffers.</p>
+<table>
+<thead>
+<tr>
+<th>Keyboard shortcut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>d</kbd></td>
+<td>Display documentation for item at point.</td>
+</tr>
+<tr>
+<td><kbd>RET</kbd></td>
+<td>Browse ns or display documentation for item at point.</td>
+</tr>
+<tr>
+<td><kbd>s</kbd></td>
+<td>Go to definition for item at point.</td>
+</tr>
+<tr>
+<td><kbd>^</kbd></td>
+<td>Browse all namespaces.</td>
+</tr>
+<tr>
+<td><kbd>n</kbd></td>
+<td>Go to next line.</td>
+</tr>
+<tr>
+<td><kbd>p</kbd></td>
+<td>Go to previous line.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="spec-browser">Spec browser</h2>
+<p>If you are using  Clojure 1.9.0-alpha16 or newer you can browse the Clojure specs registry.</p>
+<p>If you know what you are looking for, you can type <kbd>M-x</kbd> <code>cider-browse-spec</code>.
+It will prompt you for a spec name to browse to, hit <kbd>RET</kbd> and you will find yourself
+at the spec browser.</p>
+<p><img alt="Spec Browser" src="../images/spec_browser.png" /></p>
+<p>You can also type the command <kbd>M-x</kbd> <code>cider-browse-spec-all</code>. This command will prompt you for 
+a regex you can use to filter out the specs you are interested in, and will also take you to the spec browser. </p>
+<p><img alt="Spec Browser" src="../images/spec_browser_all.png" /></p>
+<p>Once in the browser you can use your mouse or the keybindings below to navigate deeper into sub specs.</p>
+<table>
+<thead>
+<tr>
+<th>Keyboard shortcut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>RET</kbd></td>
+<td>Browse the spec at point.</td>
+</tr>
+<tr>
+<td><kbd>^</kbd></td>
+<td>Go up in the navigation stack.</td>
+</tr>
+<tr>
+<td><kbd>n</kbd></td>
+<td>Go to next spec.</td>
+</tr>
+<tr>
+<td><kbd>p</kbd></td>
+<td>Go to previous spec.</td>
+</tr>
+<tr>
+<td><kbd>e</kbd></td>
+<td>Generate an example for the current browser spec.</td>
+</tr>
+</tbody>
+</table>
+<p>If your project contains a version of <code>org.clojure/test.check</code>, you can type <kbd>e</kbd> when browsing 
+a spec to generate and print an example of it.</p>
+<p><img alt="Spec Browser Example" src="../images/spec_browser_gen_example.png" /></p>
+<h2 id="documentation-buffers-include-see-also-references">Documentation buffers include "See Also" references</h2>
+<p>You can add references to other vars by including their names in <code>`</code> in the docstring.
+If the var is in another namespace, then you'll have to include the full
+namespace qualified name in the docstring. If you want to use some other delimiter instead
+of the backticks, you'll have to update the value of <code>cider-doc-xref-regexp</code> to match that.
+The first group of the regexp should always match the var name.</p>
+<p>As an example, if you want to want to use the delimiter style used by
+<a href="https://github.com/weavejester/codox">Codox</a> (<code>[[...]]</code>)  the regexp would be;</p>
+<pre><code>(setq cider-doc-xref-regexp &quot;\\[\\[\\(.*?\\)\\]\\]&quot;)
+</code></pre>
+
+<p><img alt="CIDER See Also" src="../images/cider_see_also.gif" /></p>
+<p>Example function with a docstring containing references:</p>
+<pre><code>(defn test-fn
+  &quot;Test function.
+  Also see: `clojure.core/map`, `clojure.core/reduce`, `defn`.
+  You can reference variables like `thor`, `kubaru.data.zookeeper/yoda`.
+  Also works with references to java interop forms, `java.lang.String/.length`.&quot;
+  []
+  (+ 1 1))
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../configuration/" class="btn btn-neutral float-right" title="Configuration">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../managing_connections/" class="btn btn-neutral" title="Managing Connections"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2016-2018 Bozhidar Batsov, Artur Malabarba and CIDER contributors</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/clojure-emacs/cider/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../managing_connections/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../configuration/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

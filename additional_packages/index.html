@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Additional Packages - CIDER: The Clojure Interactive Development Environment that Rocks</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Additional Packages";
+    var mkdocs_page_input_path = "additional_packages.md";
+    var mkdocs_page_url = "/additional_packages/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CIDER: The Clojure Interactive Development Environment that Rocks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../up_and_running/">Up and Running</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../interactive_programming/">Interactive Programming</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using_the_repl/">Using the REPL</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../code_completion/">Code Completion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../navigating_stacktraces/">Navigating Stacktraces</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../running_tests/">Running Tests</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../debugging/">Debugging</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../managing_connections/">Managing Connections</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../miscellaneous_features/">Miscellaneous Features</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../configuration/">Configuration</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../indent_spec/">Indentation Specification</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Additional Packages</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#clj-refactor">clj-refactor</a></li>
+    
+
+    <li class="toctree-l2"><a href="#clojure-cheatsheet">clojure-cheatsheet</a></li>
+    
+
+    <li class="toctree-l2"><a href="#helm-cider">helm-cider</a></li>
+    
+
+    <li class="toctree-l2"><a href="#cider-hydra">cider-hydra</a></li>
+    
+
+    <li class="toctree-l2"><a href="#squiggly-clojure">squiggly-clojure</a></li>
+    
+
+    <li class="toctree-l2"><a href="#inf-clojure">inf-clojure</a></li>
+    
+
+    <li class="toctree-l2"><a href="#subword-mode">subword-mode</a></li>
+    
+
+    <li class="toctree-l2"><a href="#paredit">Paredit</a></li>
+    
+
+    <li class="toctree-l2"><a href="#smartparens">Smartparens</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rainbow-delimiters">rainbow-delimiters</a></li>
+    
+
+    <li class="toctree-l2"><a href="#auto-complete">auto-complete</a></li>
+    
+
+    <li class="toctree-l2"><a href="#eval-sexp-fu">eval-sexp-fu</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../caveats/">Caveats</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_resources/">Additional Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../hacking_on_cider/">Hacking on CIDER</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about/team/">Team</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/support/">Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/release_policy/">Release Policy</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/changelog/">Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/logo/">Logo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CIDER: The Clojure Interactive Development Environment that Rocks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Additional Packages</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/clojure-emacs/cider/edit/master/docs/additional_packages.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>There are many additional Emacs packages that can enhance your Clojure programming
+experience. The majority of the minor modes listed here should be enabled for both
+<code>cider-repl-mode</code> and <code>clojure-mode</code> for optimal effects.</p>
+<h2 id="clj-refactor">clj-refactor</h2>
+<p><a href="https://github.com/clojure-emacs/clj-refactor.el">clr-refactor</a> builds on top
+of clojure-mode and CIDER and adds a ton of extra functionality (e.g. the
+ability to thread/unthread expression, find and replace usages, introduce let
+bindings, extract function and so on).</p>
+<p>A full list of features is available
+<a href="https://github.com/clojure-emacs/clj-refactor.el/wiki">here</a>.</p>
+<p>We hope to incorporate some of its features into clojure-mode and CIDER themselves
+down the road.</p>
+<p><strong>Make sure that the version of <code>clj-refactor</code> you've installed is compatible with
+your CIDER version.</strong></p>
+<h2 id="clojure-cheatsheet">clojure-cheatsheet</h2>
+<p><a href="https://github.com/clojure-emacs/clojure-cheatsheet">clojure-cheatsheet</a> in an
+Emacs rendition of the web-based
+<a href="http://clojure.org/api/cheatsheet">official Clojure Cheatsheet</a>, that's easily
+searchable via Helm.</p>
+<h2 id="helm-cider">helm-cider</h2>
+<p><a href="https://github.com/clojure-emacs/helm-cider">helm-cider</a> provides Helm
+interface for certain CIDER commands (e.g. <code>cider-apropos</code>).</p>
+<h2 id="cider-hydra">cider-hydra</h2>
+<p><a href="https://github.com/clojure-emacs/cider-hydra">cider-hydra</a> provides a nice way
+to navigate groups of related CIDER commands.</p>
+<p>You can think of it as a fancier <a href="https://github.com/justbur/emacs-which-key">which-key</a>.</p>
+<h2 id="squiggly-clojure">squiggly-clojure</h2>
+<p><a href="https://github.com/clojure-emacs/squiggly-clojure">squiggly-clojure</a> is a
+Flycheck checker for Clojure, using tools like
+<a href="https://github.com/jonase/eastwood">eastwood</a>,
+<a href="http://typedclojure.org/">core.typed</a> and
+<a href="https://github.com/jonase/kibit">kibit</a>.</p>
+<h2 id="inf-clojure">inf-clojure</h2>
+<p>This package provides basic interaction with a Clojure subprocess (REPL). It's
+based on ideas from the popular inferior-lisp package.</p>
+<p><a href="https://github.com/clojure-emacs/inf-clojure">inf-clojure</a> has two components -
+a nice Clojure REPL with auto-completion and a minor mode
+(<code>inf-clojure-minor-mode</code>), which extends clojure-mode with commands to evaluate
+forms directly in the REPL.</p>
+<p>It's basically a simple alternative of CIDER, which provides a subset of CIDER's
+functionality.</p>
+<h2 id="subword-mode">subword-mode</h2>
+<p>Enabling <code>CamelCase</code> support for editing commands(like
+<code>forward-word</code>, <code>backward-word</code>, etc) in the REPL is quite useful since
+we often have to deal with Java class and method names. The built-in
+Emacs minor mode <code>subword-mode</code> provides such functionality:</p>
+<pre><code class="el">(add-hook 'cider-repl-mode-hook #'subword-mode)
+</code></pre>
+
+<h2 id="paredit">Paredit</h2>
+<p>The use of <a href="http://mumble.net/~campbell/emacs/paredit.html">paredit</a>
+when editing Clojure (or any other Lisp) code is highly
+recommended.  You're probably using it already in your <code>clojure-mode</code>
+buffers (if you're not you probably should). You might also want to
+enable <code>paredit</code> in the REPL buffer as well:</p>
+<pre><code class="el">(add-hook 'cider-repl-mode-hook #'paredit-mode)
+</code></pre>
+
+<h2 id="smartparens">Smartparens</h2>
+<p><a href="https://github.com/Fuco1/smartparens">smartparens</a> is an excellent alternative
+  to paredit. Many Clojure hackers have adopted it recently and you might want
+  to give it a try as well. To enable <code>smartparens</code> in the REPL buffer use the
+  following code:</p>
+<pre><code class="el">(add-hook 'cider-repl-mode-hook #'smartparens-strict-mode)
+</code></pre>
+
+<h2 id="rainbow-delimiters">rainbow-delimiters</h2>
+<p><a href="https://github.com/Fanael/rainbow-delimiters">RainbowDelimiters</a> is a minor
+mode which highlights parentheses, brackets, and braces according to their
+depth. Each successive level is highlighted in a different color. This makes it
+easy to spot matching delimiters, orient yourself in the code, and tell which
+statements are at a given depth. Assuming you've already installed
+RainbowDelimiters you can enable it in the REPL like this:</p>
+<pre><code class="el">(add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+</code></pre>
+
+<h2 id="auto-complete">auto-complete</h2>
+<p><a href="http://cx4a.org/software/auto-complete/">auto-complete</a> is a popular Emacs
+interactive auto-completion
+framework. <a href="https://github.com/clojure-emacs/ac-cider">ac-cider</a> provides a
+completion source for auto-complete-mode, including, where CIDER provides it,
+pop-up documentation for completed symbols.</p>
+<h2 id="eval-sexp-fu">eval-sexp-fu</h2>
+<p><a href="https://github.com/hchbaw/eval-sexp-fu.el">eval-sexp-fu</a> provides some visual
+feedback when evaluating expressions. <a href="https://github.com/clojure-emacs/cider-eval-sexp-fu">cider-eval-sexp-fu</a> provides
+CIDER integration for <code>eval-sexp-fu</code>.</p>
+<pre><code class="el">(require 'cider-eval-sexp-fu)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../caveats/" class="btn btn-neutral float-right" title="Caveats">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../indent_spec/" class="btn btn-neutral" title="Indentation Specification"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2016-2018 Bozhidar Batsov, Artur Malabarba and CIDER contributors</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/clojure-emacs/cider/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../indent_spec/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../caveats/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Hacking on CIDER - CIDER: The Clojure Interactive Development Environment that Rocks</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Hacking on CIDER";
+    var mkdocs_page_input_path = "hacking_on_cider.md";
+    var mkdocs_page_url = "/hacking_on_cider/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CIDER: The Clojure Interactive Development Environment that Rocks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../up_and_running/">Up and Running</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../interactive_programming/">Interactive Programming</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using_the_repl/">Using the REPL</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../code_completion/">Code Completion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../navigating_stacktraces/">Navigating Stacktraces</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../running_tests/">Running Tests</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../debugging/">Debugging</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../managing_connections/">Managing Connections</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../miscellaneous_features/">Miscellaneous Features</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../configuration/">Configuration</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../indent_spec/">Indentation Specification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_packages/">Additional Packages</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../caveats/">Caveats</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_resources/">Additional Resources</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Hacking on CIDER</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#hacking-on-cider">Hacking on CIDER</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#obtaining-the-source-code">Obtaining the source code</a></li>
+        
+            <li><a class="toctree-l3" href="#changing-the-code">Changing the code</a></li>
+        
+            <li><a class="toctree-l3" href="#testing-the-code">Testing the code</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#hacking-on-cider-nrepl">Hacking on cider-nrepl</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#obtaining-the-code">Obtaining the code</a></li>
+        
+            <li><a class="toctree-l3" href="#changing-the-code_1">Changing the code</a></li>
+        
+            <li><a class="toctree-l3" href="#testing-the-code_1">Testing the code</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about/team/">Team</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/support/">Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/release_policy/">Release Policy</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/changelog/">Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/logo/">Logo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CIDER: The Clojure Interactive Development Environment that Rocks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Hacking on CIDER</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/clojure-emacs/cider/edit/master/docs/hacking_on_cider.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>This section explains the process of working with CIDER's codebase (e.g. to fix
+a bug or implement some new feature). It outlines the recommended workflows when
+working on the Emacs Lisp side (CIDER) and the Clojure side (<code>cider-nrepl</code>).</p>
+<h2 id="hacking-on-cider">Hacking on CIDER</h2>
+<h3 id="obtaining-the-source-code">Obtaining the source code</h3>
+<p>People typically install CIDER via <code>package.el</code>. While this gives you access the
+source code (as it's part of the package), it's always a much better idea to
+simply clone the code from GitHub and use it. In general - avoid editing the
+code of an installed package.</p>
+<p>Alternatively you can simply load CIDER in your Emacs straight from its source
+repo:</p>
+<pre><code class="el">;; load CIDER from its source code
+(add-to-list 'load-path &quot;~/projects/cider&quot;)
+(require 'cider)
+</code></pre>
+
+<p>Just keep in mind that you'll have to manually install all the packages CIDER
+depends on in advance.</p>
+<h3 id="changing-the-code">Changing the code</h3>
+<p>It's perfectly fine to load CIDER from <code>package.el</code> and then to start making
+experiments by changing existing code and adding new code.</p>
+<p>A very good workflow is to just open the source code you've cloned and start
+evaluating the code you've altered/added with commands like <code>C-M-x</code>,
+<code>eval-buffer</code> and so on.</p>
+<p>Once you've evaluated the new code, you can invoke some interactive command that
+uses it internally or open a Emacs Lisp REPL and experiment with it there. You
+can open an Emacs Lisp REPL with <code>M-x ielm</code>.</p>
+<p>You can also quickly evaluate some Emacs Lisp code in the minibuffer with <code>M-:</code>.</p>
+<h3 id="testing-the-code">Testing the code</h3>
+<p>The code you've wrote should ideally be covered by specs. We use
+the <a href="https://github.com/jorgenschaefer/emacs-buttercup">buttercup</a> library for
+CIDER's specs. If you're familiar with <code>Jasmine</code> or <code>RSpec</code> you'll feel right at
+home.</p>
+<p>You can run the specs you authored/changed straight from Emacs. Consult
+the
+<a href="https://github.com/jorgenschaefer/emacs-buttercup/blob/master/docs/running-tests.md">buttercup documentation</a> for
+all the details.</p>
+<h4 id="running-the-tests-in-batch-mode">Running the tests in batch mode</h4>
+<p>If you prefer running all tests outside Emacs that's also an option.</p>
+<p>Install <a href="https://github.com/cask/cask">cask</a> if you haven't
+already, then:</p>
+<pre><code>$ cd /path/to/cider
+$ cask
+</code></pre>
+
+<p>Run all tests with:</p>
+<pre><code>$ make test
+</code></pre>
+
+<p>(Note: tests may not run correctly inside Emacs' <code>shell-mode</code> buffers. Running
+them in a terminal is recommended.)</p>
+<p>You can also check for the presence of byte-compilation warnings in batch mode:</p>
+<pre><code>$ make test-bytecomp
+</code></pre>
+
+<h4 id="running-the-tests-in-travis-ci">Running the tests in Travis CI</h4>
+<p>If you prefer to see the full Travis CI test suite run successfully, the easiest
+way to achieve that is to create your own personal account on
+https://travis-ci.org. View your profile details on the Travis CI site, and
+toggle the switch to enable builds on your fork of the cider project.</p>
+<p>Subsequent pushes to your fork will generate a Travis CI build you can monitor
+for success or failure.</p>
+<h4 id="simulating-the-travis-ci-tests-locally-in-docker">Simulating the Travis CI tests locally in Docker</h4>
+<p>If you prefer not to wait for Travis CI all the time, or if you need to debug
+something that fails in Travis CI but does not fail for you on your own machine,
+then you can also run the Travis CI tests manually in Docker.</p>
+<p>You will need to run some scripts to build and launch the Docker image.</p>
+<p>To build:</p>
+<pre><code>$ docker/build.sh
+</code></pre>
+
+<p>The build script uses a base image provided by the engineers at Travis CI.</p>
+<p><em>Note: The Travis docker image is currently more than 8GB, so be prepared with a
+good internet connection and time to spare.</em></p>
+<p>The resulting docker image is tagged simply <code>cider-travis</code>. You can run this
+image by hand, but there is a convenience script available:</p>
+<pre><code>$ docker/run.sh
+</code></pre>
+
+<p>This script launches a docker container and bind-mounts your cider project
+directory as <code>/home/travis/cider</code> such that you can instantly see any code
+changes reflected inside the docker environment.</p>
+<p>For instance, first you can run tests on Emacs 25.3:</p>
+<pre><code>(emacs-25.3-travis) ~/cider$ make test
+</code></pre>
+
+<p>And then switch to Emacs 26.1 and test again:</p>
+<pre><code>(emacs-25.3-travis) ~/cider$ evm use Emacs-26-pretest-travis
+(emacs-26-pretest-travis) ~/cider$ cask install
+(emacs-26-pretest-travis) ~/cider$ make test
+</code></pre>
+
+<p>You can test byte compilation too</p>
+<pre><code>(emacs-26-pretest-travis) ~/cider$ make test-bytecomp
+</code></pre>
+
+<p>When you are done working in docker, just <code>exit</code> the bash prompt, and the docker
+container will also exit. Note that <code>docker/run.sh</code> runs the container with
+<code>--rm</code>, meaning any changes to the docker container are discarded when the
+container exits.</p>
+<p>So for example, by default, the docker image pre-installs only the most recent
+releases of Emacs 25, Emacs 26, and a recent snapshot of the Emacs git
+repository. The <code>evm</code> tool is available should you need to install some other
+specific build. However additional versions of Emacs will be discarded when
+you exit the docker container.</p>
+<h2 id="hacking-on-cider-nrepl">Hacking on cider-nrepl</h2>
+<h3 id="obtaining-the-code">Obtaining the code</h3>
+<p>Just clone it from GitHub.</p>
+<h3 id="changing-the-code_1">Changing the code</h3>
+<p>Just do <code>cider-jack-in</code> within the <code>cider-nrepl</code> project and start hacking as
+you would on any other Clojure project.  The only thing to keep in mind is that
+you'll have to restart CIDER when you add new middleware.</p>
+<p>The jacked-in project's definitions will take precedence over the once you have
+from a binary <code>cider-nrepl</code> installation. This means it's pretty easy to get
+immediate feedback for the changes you've made.</p>
+<h3 id="testing-the-code_1">Testing the code</h3>
+<p>The code you've wrote should ideally be covered by test. We use the
+<code>clojure.test</code> library for <code>cider-nrepl</code>'s tests.</p>
+<p>You can run the tests you authored/changed straight from Emacs. Consult the
+<a href="../running_tests/">CIDER documentation</a> for all the details.</p>
+<h4 id="running-the-tests-in-batch-mode_1">Running the tests in batch mode</h4>
+<p>You can also run the tests in an external shell. Running <code>lein test</code> won't run
+pretty much anything, though. (perhaps we should change this?) To run the
+Clojure and ClojureScript tests you should specify some profile like this:</p>
+<pre><code>$ lein with-profile +1.8,+test-clj test&quot;
+$ lein with-profile +1.8,+test-cljs test&quot;
+</code></pre>
+
+<p>This will run all Clojure and ClojureScript tests against version 1.8 of both
+languages.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../about/team/" class="btn btn-neutral float-right" title="Team">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../additional_resources/" class="btn btn-neutral" title="Additional Resources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2016-2018 Bozhidar Batsov, Artur Malabarba and CIDER contributors</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/clojure-emacs/cider/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../additional_resources/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../about/team/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

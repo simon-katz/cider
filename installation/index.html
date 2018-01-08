@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Installation - CIDER: The Clojure Interactive Development Environment that Rocks</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Installation";
+    var mkdocs_page_input_path = "installation.md";
+    var mkdocs_page_url = "/installation/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> CIDER: The Clojure Interactive Development Environment that Rocks</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Installation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#prerequisites">Prerequisites</a></li>
+    
+
+    <li class="toctree-l2"><a href="#installation-via-packageel">Installation via package.el</a></li>
+    
+
+    <li class="toctree-l2"><a href="#installation-via-use-package">Installation via use-package</a></li>
+    
+
+    <li class="toctree-l2"><a href="#installation-via-el-get">Installation via el-get</a></li>
+    
+
+    <li class="toctree-l2"><a href="#manual-installation">Manual installation</a></li>
+    
+
+    <li class="toctree-l2"><a href="#ciders-nrepl-middleware">CIDER's nREPL middleware</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#setting-up-a-standalone-repl">Setting up a standalone REPL</a></li>
+        
+            <li><a class="toctree-l3" href="#using-embedded-nrepl-server">Using embedded nREPL server</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../up_and_running/">Up and Running</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../interactive_programming/">Interactive Programming</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../using_the_repl/">Using the REPL</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../code_completion/">Code Completion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../navigating_stacktraces/">Navigating Stacktraces</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../running_tests/">Running Tests</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../debugging/">Debugging</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../managing_connections/">Managing Connections</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../miscellaneous_features/">Miscellaneous Features</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../configuration/">Configuration</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../indent_spec/">Indentation Specification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_packages/">Additional Packages</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../caveats/">Caveats</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../troubleshooting/">Troubleshooting</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../faq/">FAQ</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../additional_resources/">Additional Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../hacking_on_cider/">Hacking on CIDER</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">About</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../about/team/">Team</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/support/">Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/contributing/">Contributing</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/release_policy/">Release Policy</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/changelog/">Changelog</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/logo/">Logo</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../about/license/">License</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">CIDER: The Clojure Interactive Development Environment that Rocks</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Installation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/clojure-emacs/cider/edit/master/docs/installation.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>The canonical way to install CIDER is via <code>package.el</code> (Emacs's built-in package
+manager), but it can be installed manually or via alternative package managers such
+as <code>el-get</code>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You'll need to have Emacs installed (preferably the latest stable
+release). If you're new to Emacs you might want to go through
+<a href="https://www.gnu.org/software/emacs/tour/index.html">the guided tour of Emacs</a>
+and the built-in tutorial (just press <kbd>C-h t</kbd>).</p>
+<p>CIDER officially supports Emacs 24.4+, Java 7+ and Clojure(Script) 1.7+.
+CIDER 0.10 was the final release which supported Java 6 and Clojure 1.5 and 1.6.</p>
+<p>You'll also need a recent version of your favorite build tool (Leiningen, Boot
+or Gradle) to be able to start CIDER via <code>cider-jack-in</code>. Generally it's a good
+idea to use their latest stable versions.</p>
+<p><strong>CIDER does not support ClojureCLR.</strong></p>
+<h2 id="installation-via-packageel">Installation via package.el</h2>
+<p>CIDER is available on the two major <code>package.el</code> community
+maintained repos -
+<a href="http://stable.melpa.org">MELPA Stable</a>
+and <a href="http://melpa.org">MELPA</a>.</p>
+<p>You can install CIDER with the following command:</p>
+<p><kbd>M-x package-install [RET] cider [RET]</kbd></p>
+<p>or by adding this bit of Emacs Lisp code to your Emacs initialization file
+(<code>.emacs</code> or <code>init.el</code>):</p>
+<pre><code class="el">(unless (package-installed-p 'cider)
+  (package-install 'cider))
+</code></pre>
+
+<p>If the installation doesn't work try refreshing the package list:</p>
+<p><kbd>M-x package-refresh-contents [RET]</kbd></p>
+<p>Keep in mind that MELPA packages are built automatically from
+the <code>master</code> branch, meaning bugs might creep in there from time to
+time. Never-the-less, installing from MELPA is a reasonable way of
+obtaining CIDER, as the <code>master</code> branch is normally quite stable
+and serious regressions there are usually fixed pretty quickly.</p>
+<p>Generally, users of the non-adventurous kind are advised to stick
+with the stable releases, available from MELPA Stable.
+In Emacs 24.4+, you can pin CIDER to always use MELPA
+Stable by adding this to your Emacs initialization:</p>
+<pre><code class="el">(add-to-list 'package-pinned-packages '(cider . &quot;melpa-stable&quot;) t)
+</code></pre>
+
+<p><strong>CIDER has dependencies (e.g. <code>queue</code> &amp; <code>seq</code>) that are only available in the
+  <a href="https://elpa.gnu.org/">GNU ELPA repository</a>. It's the only package repository
+  enabled by default in Emacs and you should not disable it!</strong></p>
+<h2 id="installation-via-use-package">Installation via use-package</h2>
+<p><code>use-package</code> can be used to install CIDER via the <code>package.el</code>'s repositories
+<a href="http://stable.melpa.org">MELPA Stable</a> and <a href="http://melpa.org">MELPA</a>.</p>
+<p>If you wanted to install the version of CIDER which is what is to be found in
+the <code>master</code> branch, declare the following in your Emacs initialization file
+(<code>.emacs</code> or <code>init.el</code>):</p>
+<pre><code class="el">(use-package cider
+  :ensure t)
+</code></pre>
+
+<p>However, if you wanted to be a bit more conservative and only use the stable
+releases of CIDER, you'd declare the following:</p>
+<pre><code class="el">(use-package cider
+  :ensure t
+  :pin melpa-stable)
+</code></pre>
+
+<p>After placing one of the above s-expressions, evaluate it, for it to take effect
+by entering: <kbd>C-x C-e</kbd>.</p>
+<p>For further configuration options with <code>use-package</code>, consult the
+official <a href="https://github.com/jwiegley/use-package">use-package repository</a>.</p>
+<h2 id="installation-via-el-get">Installation via el-get</h2>
+<p>CIDER is also available for installation from
+the <a href="https://github.com/dimitri/el-get">el-get</a> package manager.</p>
+<p>Provided you've already installed <code>el-get</code> you can install CIDER with the
+following command:</p>
+<p><kbd>M-x el-get-install [RET] cider [RET]</kbd></p>
+<h2 id="manual-installation">Manual installation</h2>
+<p>Alternatively you can simply load CIDER in your Emacs straight from its source
+repo. Assuming you've already obtained the code you should add something like
+this to your Emacs configuration:</p>
+<pre><code class="el">;; load CIDER from its source code
+(add-to-list 'load-path &quot;~/projects/cider&quot;)
+(require 'cider)
+</code></pre>
+
+<p>Just keep in mind that you'll have to manually install all the packages CIDER
+depends on in advance.</p>
+<h2 id="ciders-nrepl-middleware">CIDER's nREPL middleware</h2>
+<p>Much of CIDER's functionality depends on the presence of CIDER's
+own <a href="https://github.com/clojure-emacs/cider-nrepl">nREPL middleware</a>. Starting
+with version 0.11, When <code>cider-jack-in</code> (<kbd>C-c M-j</kbd>) is used, CIDER
+takes care of injecting it and its other dependencies.</p>
+<p><strong><code>profiles.clj</code> or <code>profile.boot</code> don't need to be modified anymore for the above use case!</strong></p>
+<p>If you don't want <code>cider-jack-in</code> to inject dependencies automatically, set
+<code>cider-inject-dependencies-at-jack-in</code> to <code>nil</code>. Note that you'll have to setup
+the dependencies yourself (see the section below), just as in CIDER 0.10 and older.</p>
+<p>CIDER can also inject a Clojure dependency into your project, which is useful,
+for example, if your project defaults to an older version of Clojure than that
+supported by the CIDER middleware. Set <code>cider-jack-in-auto-inject-clojure</code>
+appropriately to enable this.</p>
+<p>If a standalone REPL is preferred, you need to invoke <code>cider-connect</code> (instead
+of <code>cider-jack-in</code>) and you'll need to manually add the dependencies to your
+Clojure project (explained in the following section).</p>
+<h3 id="setting-up-a-standalone-repl">Setting up a standalone REPL</h3>
+<h4 id="using-leiningen">Using Leiningen</h4>
+<p>Use the convenient plugin for defaults, either in your project's
+<code>project.clj</code> file or in the :repl profile in <code>~/.lein/profiles.clj</code>.</p>
+<pre><code class="clojure">:plugins [[cider/cider-nrepl &quot;x.y.z&quot;]]
+</code></pre>
+
+<p>A minimal <code>profiles.clj</code> for CIDER would be:</p>
+<pre><code class="clojure">{:repl {:plugins [[cider/cider-nrepl &quot;0.16.0&quot;]]}}
+</code></pre>
+
+<p><strong>Be careful not to place this in the <code>:user</code> profile, as this way CIDER's
+middleware will always get loaded, causing <code>lein</code> to start slower.  You really
+need it just for <code>lein repl</code> and this is what the <code>:repl</code> profile is for.</strong></p>
+<h4 id="using-boot">Using Boot</h4>
+<p>Boot users can configure the tool to include the middleware automatically in
+all of their projects using a <code>~/.boot/profile.boot</code> file like so:</p>
+<pre><code class="clojure">(require 'boot.repl)
+
+(swap! boot.repl/*default-dependencies*
+       concat '[[cider/cider-nrepl &quot;0.16.0&quot;]])
+
+(swap! boot.repl/*default-middleware*
+       conj 'cider.nrepl/cider-middleware)
+</code></pre>
+
+<p>For more information visit <a href="https://github.com/boot-clj/boot/wiki/Cider-REPL">boot-clj wiki</a>.</p>
+<h3 id="using-embedded-nrepl-server">Using embedded nREPL server</h3>
+<p>If you're embedding nREPL in your application you'll have to start the
+server with CIDER's own nREPL handler.</p>
+<pre><code class="clojure">(ns my-app
+  (:require [clojure.tools.nrepl.server :as nrepl-server]
+            [cider.nrepl :refer (cider-nrepl-handler)]))
+
+(defn -main
+  []
+  (nrepl-server/start-server :port 7888 :handler cider-nrepl-handler))
+</code></pre>
+
+<p>It goes without saying that your project should depend on <code>cider-nrepl</code>.</p>
+<hr />
+<p><code>x.y.z</code> should match the version of CIDER you're currently using (say <code>0.16.0</code>).
+For snapshot releases of CIDER you should use the snapshot of the plugin as well
+(say <code>0.16.0-SNAPSHOT</code>).</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../up_and_running/" class="btn btn-neutral float-right" title="Up and Running">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright (C) 2016-2018 Bozhidar Batsov, Artur Malabarba and CIDER contributors</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/clojure-emacs/cider/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../up_and_running/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
