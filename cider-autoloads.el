@@ -629,6 +629,7 @@ View the manual in your default browser.
 
 ;;;***
 
+(provide 'cider-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
