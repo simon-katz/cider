@@ -797,6 +797,7 @@ Displays the function dependencies for  NS and SYMBOL using completing read.
 
 ;;;***
 
+(provide 'cider-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
